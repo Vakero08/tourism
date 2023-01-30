@@ -1,4 +1,4 @@
-const wretch = require("wretch");
+const axios = require("axios");
 const cheerio = require("cheerio");
 const downloadImage = require("./Apiutils");
 
@@ -43,7 +43,7 @@ const getRequests = async params => {
   const response = [];
   try {
     links.forEach((url, index) => {
-      const req = wretch(url).get().text();
+      const req = axios.get(url);
       arrayRequest.push(req);
     });
     const resp = await Promise.allSettled(arrayRequest);
