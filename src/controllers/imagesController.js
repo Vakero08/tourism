@@ -50,6 +50,7 @@ const getRequests = async params => {
     });
     const resp = await Promise.allSettled(arrayRequest);
     resp.map(({ status, value }) => {
+      console.log(status, value);
       if (status !== "fulfilled") response.push([]);
       if (status === "fulfilled") response.push(value.data);
     });
