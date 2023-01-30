@@ -16,6 +16,7 @@ const imagesController = async (req, res) => {
 const getData = async (req, res) => {
   const arrayData = [];
   const response = await getRequests();
+  console.log(response);
   if (response?.length) {
     response.forEach((data, ind) => {
       const $ = cheerio.load(data);
@@ -32,6 +33,7 @@ const getData = async (req, res) => {
         arrayData.push(obj);
       }
     });
+    console.log(arrayData);
     res.status(200).send(JSON.stringify(arrayData));
   } else {
     res.status(403).send(JSON.stringify([]));
